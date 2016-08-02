@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Friends{% endblock %}
+{% block content %}
+  <div class="jumbotron">
+    <h2>Friends</h2>
+  </div>
+  <div class="friendCont">
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Balances</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for friend in friends %}
+            <tr>
+              <td>{{ friend.getId() }}</td>
+              <td>{{ friend.getFirstName() }}</td>
+              <td>
+                {% for balance in friend.getBalances() %}
+                {{ balance.getCurrencyCode() }} {{ balance.getAmount() }} <br/>
+                {% endfor %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
